@@ -8,7 +8,7 @@ import dinjection.invader.configuration.DefaultConfiguration;
  * Created by Stefan on 9/9/16.
  */
 @StartInvasion(classes = {
-        TestController.class
+        StartingController.class
 }
 )
 public class Conf extends DefaultConfiguration {

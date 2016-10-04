@@ -74,6 +74,7 @@ local.properties
 .idea/dictionaries
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
+.idea/
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
@@ -97,6 +98,7 @@ local.properties
 
 # IntelliJ
 /out/
+*.iml
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

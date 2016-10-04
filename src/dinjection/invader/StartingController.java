@@ -6,7 +6,7 @@ import dinjection.invader.classes.PersonService;
 /**
  * Created by Stefan on 9/8/16.
  */
-public class TestController {
+public class StartingController {
 
     @Invade
     private PersonService personService;
