@@ -2,6 +2,7 @@ package server;
 
 import com.sun.net.httpserver.HttpServer;
 import server.handlers.RequestHandler;
+import server.utils.PropertyUtils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -13,8 +14,7 @@ public class InvaderServer {
 
     public static void main(String[] args) throws IOException {
 
-        int port = 9999;
-        HttpServer httpServer = HttpServer.create(new InetSocketAddress(port), 0);
+        HttpServer httpServer = HttpServer.create(new InetSocketAddress(Integer.parseInt(PropertyUtils.getProp("server.port"))), 0);
 
         httpServer.createContext("/", httpExchange -> new RequestHandler().handle(httpExchange));
 
