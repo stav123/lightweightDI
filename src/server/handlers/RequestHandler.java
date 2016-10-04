@@ -2,10 +2,13 @@ package server.handlers;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import dinjection.invader.configuration.Configuration;
+import dinjection.invader.diparser.InvaderParser;
 import server.utils.PropertyUtils;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created by Stefan on 10/4/16.
@@ -38,13 +41,35 @@ public class RequestHandler implements HttpHandler {
 
     public void getHandle(HttpExchange httpExchange) throws IOException {
 
-        String response = "GET REQUEST WITH PATH: " + httpExchange.getRequestURI().getRawPath();
-        httpExchange.sendResponseHeaders(200, response.length());
 
-        //load the class from props file -> look for controller -> return json to response
+        Class clazz = null;
+
+        try {
+            clazz = Class.forName(PropertyUtils.getProp("configuration.class"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        Configuration config = null;
+
+        try {
+            config = (Configuration) clazz.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        String res = "EMPTY";
+        try {
+            res = new InvaderParser(config).resolve(httpExchange.getRequestURI().getRawPath());
+        } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
 
         OutputStream responseBody = httpExchange.getResponseBody();
-        responseBody.write(response.getBytes());
+        httpExchange.sendResponseHeaders(200, res.length());
+        responseBody.write(res.getBytes());
         responseBody.close();
 
     }
@@ -53,4 +78,6 @@ public class RequestHandler implements HttpHandler {
 
         //repeat
     }
+
+
 }

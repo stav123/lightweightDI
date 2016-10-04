@@ -1,6 +1,7 @@
 package dinjection.invader;
 
 import dinjection.invader.annotation.Invade;
+import dinjection.invader.annotation.InvaderMapping;
 import dinjection.invader.classes.PersonService;
 
 /**
@@ -11,7 +12,8 @@ public class StartingController {
     @Invade
     private PersonService personService;
 
-    public void testDAO() {
-        personService.find();
+    @InvaderMapping(value = "/dao")
+    public String testDAO() {
+        return "test";
     }
 }

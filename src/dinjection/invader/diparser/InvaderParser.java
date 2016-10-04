@@ -1,6 +1,7 @@
 package dinjection.invader.diparser;
 
 import dinjection.invader.annotation.Invade;
+import dinjection.invader.annotation.InvaderMapping;
 import dinjection.invader.annotation.StartInvasion;
 import dinjection.invader.cache.Cache;
 import dinjection.invader.cache.CacheableObject;
@@ -10,7 +11,9 @@ import dinjection.invader.logger.InvLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Stefan on 9/8/16.
@@ -22,22 +25,46 @@ public class InvaderParser {
     private final Cache<Class, CacheableObject> cache = new Cache<>(1000, 10, 100);
 
 
-    InvaderParser(Configuration configuration) {
+    public InvaderParser(Configuration configuration) {
         this.configuration = configuration;
+        this.configuration.reg();
     }
 
 
-    <T> T resolve(Class<T> clazz) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public String resolve(String path) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+//
+//        if(Arrays.asList(configuration.getClass().getAnnotation(StartInvasion.class).classes()).contains(clazz)) {
+//            T result = (T) clazz.newInstance();
+//            resolveDependencies(result);
+//            return result;
+//        }
 
-        if(Arrays.asList(configuration.getClass().getAnnotation(StartInvasion.class).classes()).contains(clazz)) {
-            T result = (T) clazz.newInstance();
-            resolveDependencies(result);
-            return result;
+        List<Class> classes = Arrays.asList(configuration.getClass().getAnnotation(StartInvasion.class).classes());
+
+        for(Class aClass : classes) {
+
+            Object o = aClass.newInstance();
+
+            Method[] declaredMethods = o.getClass().getDeclaredMethods();
+
+
+            for(Method declaredMethod : declaredMethods) {
+
+                if(declaredMethod.isAnnotationPresent(InvaderMapping.class)) {
+                    InvaderMapping annotation = declaredMethod.getAnnotation(InvaderMapping.class);
+                    if(annotation.value().equals(path)) {
+                        resolveDependencies(o);
+                        return (String) declaredMethod.invoke(o);
+                    }
+                }
+            }
+
         }
 
-        throw new UnsupportedOperationException(
-                String.format(Messages.NOT_PART_OF_REGISTERED_CLASSES, clazz.getName())
-        );
+//        throw new UnsupportedOperationException(
+//                String.format(Messages.NOT_PART_OF_REGISTERED_CLASSES, classes.get(0).getName())
+//        );
+        return "EMPTY";
     }
 
 
