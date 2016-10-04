@@ -1,17 +1,16 @@
-package invader.diparser;
+package dinjection.invader.diparser;
 
-import invader.annotation.Invade;
-import invader.annotation.StartInvasion;
-import invader.cache.Cache;
-import invader.cache.CacheableObject;
-import invader.configuration.Configuration;
-import invader.consts.Messages;
-import invader.logger.InvLog;
+import dinjection.invader.annotation.Invade;
+import dinjection.invader.annotation.StartInvasion;
+import dinjection.invader.cache.Cache;
+import dinjection.invader.cache.CacheableObject;
+import dinjection.invader.configuration.Configuration;
+import dinjection.invader.consts.Messages;
+import dinjection.invader.logger.InvLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Created by Stefan on 9/8/16.

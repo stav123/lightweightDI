@@ -1,7 +1,7 @@
-package invader.configuration;
+package dinjection.invader.configuration;
 
 
-import invader.consts.Messages;
+import dinjection.invader.consts.Messages;
 
 import java.util.HashMap;
 import java.util.Map;

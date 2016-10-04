@@ -1,4 +1,4 @@
-package invader.annotation;
+package dinjection.invader.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

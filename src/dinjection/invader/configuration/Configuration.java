@@ -1,4 +1,4 @@
-package invader.configuration;
+package dinjection.invader.configuration;
 
 /**
  * Created by Stefan on 9/8/16.

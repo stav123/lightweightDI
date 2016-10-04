@@ -1,4 +1,4 @@
-package invader.consts;
+package dinjection.invader.consts;
 
 /**
  * Created by Stefan on 9/10/16.

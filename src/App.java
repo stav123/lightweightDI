@@ -1,6 +1,6 @@
-import invader.Conf;
-import invader.TestController;
-import invader.diparser.Invader;
+import dinjection.invader.Conf;
+import dinjection.invader.TestController;
+import dinjection.invader.diparser.Invader;
 
 /**
  * Created by Stefan on 9/8/16.

@@ -1,9 +1,7 @@
-package invader;
+package dinjection.invader;
 
-import invader.annotation.Invade;
-import invader.classes.Facade;
-import invader.classes.PersonDAO;
-import invader.classes.PersonService;
+import dinjection.invader.annotation.Invade;
+import dinjection.invader.classes.PersonService;
 
 /**
  * Created by Stefan on 9/8/16.

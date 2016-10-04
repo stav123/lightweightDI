@@ -1,7 +1,7 @@
-package invader.diparser;
+package dinjection.invader.diparser;
 
-import invader.annotation.StartInvasion;
-import invader.configuration.Configuration;
+import dinjection.invader.annotation.StartInvasion;
+import dinjection.invader.configuration.Configuration;
 
 import java.lang.reflect.InvocationTargetException;
 

@@ -1,7 +1,7 @@
-package invader.classes;
+package dinjection.invader.classes;
 
-import invader.annotation.Invade;
-import invader.cache.CacheableObject;
+import dinjection.invader.annotation.Invade;
+import dinjection.invader.cache.CacheableObject;
 
 /**
  * Created by Stefan on 9/8/16.
@@ -9,10 +9,10 @@ import invader.cache.CacheableObject;
 public class PersonServiceImpl extends CacheableObject implements PersonService {
 
     @Invade
-    PersonDAO personDAO;
+    private PersonDAO personDAO;
 
     @Invade
-    PersonDAO personDAO2;
+    private PersonDAO personDAO2;
 
     @Override
     public void find() {

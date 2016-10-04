@@ -1,6 +1,4 @@
-package invader.classes;
-
-import invader.cache.CacheableObject;
+package dinjection.invader.classes;
 
 /**
  * Created by Stefan on 9/9/16.

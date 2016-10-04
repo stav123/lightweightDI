@@ -1,4 +1,4 @@
-package invader.logger;
+package dinjection.invader.logger;
 
 /**
  * Created by Stefan on 9/9/16.

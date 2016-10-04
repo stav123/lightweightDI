@@ -1,4 +1,4 @@
-package invader.cache;
+package dinjection.invader.cache;
 
 /**
  * Created by Stefan on 9/17/16.

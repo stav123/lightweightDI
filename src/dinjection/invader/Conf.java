@@ -1,8 +1,8 @@
-package invader;
+package dinjection.invader;
 
-import invader.annotation.StartInvasion;
-import invader.classes.*;
-import invader.configuration.DefaultConfiguration;
+import dinjection.invader.annotation.StartInvasion;
+import dinjection.invader.classes.*;
+import dinjection.invader.configuration.DefaultConfiguration;
 
 /**
  * Created by Stefan on 9/9/16.

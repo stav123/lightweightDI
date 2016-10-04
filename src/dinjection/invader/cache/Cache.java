@@ -1,4 +1,4 @@
-package invader.cache;
+package dinjection.invader.cache;
 
 import java.util.ArrayList;
 import java.util.HashMap;
