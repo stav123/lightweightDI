@@ -16,4 +16,10 @@ public class StartingController {
     public String testDAO() {
         return "test";
     }
+
+    @InvaderMapping(value = "/test2")
+    public String secondTest() {
+        personService.find();
+        return "person";
+    }
 }

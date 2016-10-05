@@ -17,7 +17,7 @@ public class PersonServiceImpl extends CacheableObject implements PersonService 
     @Override
     public void find() {
         personDAO2.create();
-        personDAO.create();
+
     }
 
 

@@ -22,8 +22,8 @@ public class RequestHandler implements HttpHandler {
             if(httpExchange.getRequestMethod().equals("GET")) {
 
                 try {
-                    this.getHandle(httpExchange);
-                } catch (IOException e) {
+                        this.getHandle(httpExchange);
+                } catch (IOException | IllegalAccessException | InstantiationException e) {
                     e.printStackTrace();
                 }
             } else {
@@ -39,7 +39,7 @@ public class RequestHandler implements HttpHandler {
 
     }
 
-    public void getHandle(HttpExchange httpExchange) throws IOException {
+    private void getHandle(HttpExchange httpExchange) throws IOException, IllegalAccessException, InstantiationException {
 
 
         Class clazz = null;
@@ -50,18 +50,15 @@ public class RequestHandler implements HttpHandler {
             e.printStackTrace();
         }
 
+        Configuration config = (Configuration) clazz.newInstance();
 
-        Configuration config = null;
-
-        try {
-            config = (Configuration) clazz.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
+        //just for test purposes
         String res = "EMPTY";
+
         try {
+
             res = new InvaderParser(config).resolve(httpExchange.getRequestURI().getRawPath());
+
         } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
