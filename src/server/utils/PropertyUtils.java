@@ -10,7 +10,6 @@ public class PropertyUtils {
 
     private static final Properties prop = new Properties();
 
-
     static {
         String propertiesFile = "config.properties";
         try {
